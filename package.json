@@ -19,18 +19,28 @@
     "typecheck": "tsc --noEmit",
     "test:secrets": "tsx scripts/test-secrets.ts",
     "study": "tsx scripts/study/run-study.ts",
-    "study:aggregate": "tsx scripts/study/aggregate.ts"
+    "study:aggregate": "tsx scripts/study/aggregate.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GonzaloPeriane/ctxaudit.git"
+  },
+  "homepage": "https://github.com/GonzaloPeriane/ctxaudit#readme",
+  "bugs": {
+    "url": "https://github.com/GonzaloPeriane/ctxaudit/issues"
   },
   "keywords": [
     "ai",
-    "agents",
     "claude",
+    "agents",
     "context-engineering",
     "agents-md",
     "claude-md",
     "tokens",
-    "lint",
-    "mcp"
+    "mcp",
+    "cli",
+    "linter"
   ],
   "author": "GonzaloPeriane",
   "license": "Apache-2.0",

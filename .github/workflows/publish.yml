@@ -1,0 +1,26 @@
+name: Publish to npm
+
+# Publishes to npm when you create a GitHub Release (tag like v0.1.0).
+# Auth comes from the NPM_TOKEN repo secret — no credentials in the repo or chat.
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write # for npm provenance (supply-chain attestation)
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - run: npm run build
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
